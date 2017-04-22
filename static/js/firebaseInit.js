@@ -2,12 +2,12 @@ $(document).ready(function() {
 
     firebaseDatabase.init();
 
-}
+});
 
 var constants = {
-    var gameReference = "game/";
-    var isPlayingReference = "/starCount";
-    var value = "value";
+    gameReference : "game/",
+    isPlayingReference : "/starCount",
+    value : "value"
 }
 
 var firebaseDatabase = {
@@ -29,20 +29,16 @@ var firebaseDatabase = {
 var gameDatabase = {
 
     writeGame : function(gameId, city) {
-        firebase.database().ref(constants.gameReference + userId).set({
+        firebase.database().ref(constants.gameReference + gameId).set({
             city: city,
             isPlaying: false
         });
-    }
+    },
+
 
     updatePlayingGame : function(gameId, isPlaying) {
-        var updateGame = {
-            isPlaying = isPlaying
-        }
-        var updates = {};
-        updates[constants.gameReference + gameId] = updateGame;
-        return firebase.database().ref().update(updates);
-    }
+        // TODO
+    },
 
     notifyWhenPlayingChanges : function() {
         var gamePlayingRef = firebase.
@@ -52,7 +48,7 @@ var gameDatabase = {
         gamePlayingRef.on(constants.value, function(snapshot) {
             // TODO notify users
         });
-    }
+    },
 
     getCityGame : function(gameId) {
         return firebase.database().ref(constants.gameReference + gameId).once(constants.value)
