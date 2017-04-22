@@ -15,6 +15,7 @@ var constants = {
     cityId : "#city-text",
     phoneId : "#phone-text",
     nameId : "#name-text",
+    codeId : "#code-text",
     buttonId : "#form-button"
 }
 
@@ -97,6 +98,7 @@ var userDatabase = {
     },
 
     joinUser : function(userId, gameId) {
+        console.log('Join User at: ' + constants.gameReference + gameId + constants.usersReference + '/' + userId);
         firebase.database().ref(constants.gameReference + gameId + constants.usersReference + '/' + userId).set(0);
     },
 
@@ -105,6 +107,18 @@ var userDatabase = {
                 .then(function(snapshot) {
                   return snapshot.val().name;
                 });
+    }
+
+}
+
+var utils = {
+
+    makeId : function() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
     }
 
 }
