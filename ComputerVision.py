@@ -16,20 +16,7 @@ params = urllib.urlencode({
     'language': 'en',
 })
 
-
 def analize():
-    try:
-        conn = httplib.HTTPSConnection(_url)
-        conn.request("POST", "/vision/v1.0/analyze?%s" % params, json, headers=headers)
-        response = conn.getresponse()
-        data = response.read()
-        print(data)
-        conn.close()
-    except Exception as e:
-        print('Error ' + e.message)
-
-
-def analizeRequest():
 
     result = None
 
@@ -49,8 +36,6 @@ def analizeRequest():
 
         else:
             print("Error code: %d" % (response.status_code))
-            print("Message: %s" % (response.json()['error']['message']))
-
         break
 
     print result

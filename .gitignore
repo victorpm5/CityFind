@@ -93,3 +93,6 @@ ENV/
 
 # jetbrains
 .idea
+
+#API
+Config.py
