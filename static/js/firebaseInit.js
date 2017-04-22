@@ -1,12 +1,14 @@
 $(document).ready(function() {
 
     firebaseDatabase.init();
+    gameDatabase.updateFinishedGame('111111', true);
 
 });
 
 var constants = {
     gameReference : "game/",
-    isPlayingReference : "/starCount",
+    isPlayingReference : "/isPlaying",
+    hasFinishedReference : "/hasFinished",
     value : "value"
 }
 
@@ -28,22 +30,38 @@ var firebaseDatabase = {
 
 var gameDatabase = {
 
-    writeGame : function(gameId, city) {
+    writeGame : function(gameId, city, userAdminId) {
         firebase.database().ref(constants.gameReference + gameId).set({
             city: city,
-            isPlaying: false
+            isPlaying: false,
+            hasFinished: false,
+            admin: userAdminId
         });
     },
 
 
     updatePlayingGame : function(gameId, isPlaying) {
-        // TODO
+        var updates = {};
+        updates['/' + constants.gameReference +
+                gameId +
+                constants.isPlayingReference] = isPlaying;
+
+        return firebase.database().ref().update(updates);
     },
 
-    notifyWhenPlayingChanges : function() {
+    updateFinishedGame : function(gameId, hasFinished) {
+        var updates = {};
+        updates['/' + constants.gameReference +
+                gameId +
+                constants.hasFinishedReference] = hasFinished;
+
+        return firebase.database().ref().update(updates);
+    },
+
+    notifyWhenPlayingChanges : function(gameId) {
         var gamePlayingRef = firebase.
                 database().ref( constants.gameReference +
-                                postId +
+                                gameId +
                                 constants.gamePlayingRef);
         gamePlayingRef.on(constants.value, function(snapshot) {
             // TODO notify users
