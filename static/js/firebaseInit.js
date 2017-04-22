@@ -109,13 +109,21 @@ var userDatabase = {
     joinUser : function(userId, gameId) {
         console.log('Join User at: ' + constants.gameReference + gameId + constants.usersReference + '/' + userId);
         firebase.database().ref(constants.gameReference +
-                                gameId +
-                                constants.usersReference + '/' +
-                                userId).set(0, function(error) {
-                                    if (error) {
-                                        alert('Something went wrong...');
+                                gameId).once(constants.value)
+                                .then(function(snapshot) {
+                                    if (snapshot.val() != null) {
+                                        firebase.database().ref(constants.gameReference +
+                                                                gameId +
+                                                                constants.usersReference + '/' +
+                                                                userId).set(0, function(error) {
+                                                                    if (error) {
+                                                                        alert('Something went wrong...');
+                                                                    } else {
+                                                                        window.location = '/' + gameId + '/' + userId;
+                                                                    }
+                                                                });
                                     } else {
-                                        window.location = '/' + gameId + '/' + userId;
+                                        alert('Something went wrong...');
                                     }
                                 });
     },
