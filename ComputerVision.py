@@ -1,9 +1,8 @@
-import httplib, urllib
+import urllib
 import requests
 import Config
 
-_url = 'westeurope.api.cognitive.microsoft.com'
-json = {'url': 'http://weknownyourdreamz.com/images/park/park-07.jpg'}
+_url = 'https://westeurope.api.cognitive.microsoft.com/vision/v1.0/analyze?'
 
 headers = {
     'Content-Type': 'application/json',
@@ -20,9 +19,11 @@ def analize():
 
     result = None
 
+    json = {'url': 'http://weknownyourdreamz.com/images/park/park-07.jpg'} #Just for testing -> urls taken as parameters
+
     while True:
 
-        response = requests.post('https://westeurope.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Categories,Tags',data=json, headers=headers)
+        response = requests.post(_url + params, json=json, headers=headers)
 
         if response.status_code == 200 or response.status_code == 201:
 
