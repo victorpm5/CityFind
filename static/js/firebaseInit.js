@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
     firebaseDatabase.init();
-    console.log(userDatabase.getUserName('644577607'));
 
 });
 
