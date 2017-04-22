@@ -76,7 +76,6 @@ body {
 	padding-top: 20px;
 }
 
-<<<<<<< HEAD
 .form-card {
 	background-color: rgba(1, 1, 1, 0.18);
 	 box-shadow: 0 9px 20px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
@@ -135,5 +134,59 @@ input.form-control{
   left: 0;
   padding: 1rem;
   text-align: center;
-  color: #808080
+  color: #808080;
+}
+
+/* unvisited link */
+a:link {
+    color: rgb(85, 85, 85);
+		text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: grey;
+		text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: purple;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+
+.timer-room{
+	text-align: center;
+	font-size: 250%;
+	font-size-adjust: auto;
+
+}
+
+#card-time{
+	padding: 0 auto;
+	border-width: thin;
+	border-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+#city{
+	padding: 0px;
+	margin: 0px;
+}
+
+#insert-photo{
+	width: 30px;
+	height: 30px;
+	resize: both;
+	margin: 5px;
+}
+
+#btn-photo{
+	align-self: flex-end;
+	text-align: right;
 }
