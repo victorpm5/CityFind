@@ -16,6 +16,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+		height: inherit;
 }
 
 .margin-base-vertical {
@@ -189,4 +190,49 @@ a:active {
 #btn-photo{
 	align-self: flex-end;
 	text-align: right;
+		margin-top: 80px;
+}
+
+.list-group {
+
+	border-width: 5px;
+	align-self: center;
+	height: inherit;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+.list-group-item{
+		background-color: transparent;
+		border: transparent;
+		padding: 0px;
+		align-content: center;
+		margin-bottom: 10px;
+
+}
+
+#word-game {
+	width: auto;
+	text-align: center;
+	margin: 7px;
+}
+
+div.no-padding{
+	padding: 0px;
+}
+
+p.text-puntuation{
+	text-align: center;
+	padding: 0 px;
+	margin: 0px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.color-purple{
+	background-color: rgba(162, 135, 182, 1);
+	border: transparent;
+}
+
+button.color-purple:hover{
+	background-color: rgba(123, 96, 140, 1);
 }
