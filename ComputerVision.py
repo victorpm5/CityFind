@@ -6,7 +6,7 @@ _url = 'https://westeurope.api.cognitive.microsoft.com/vision/v1.0/analyze?'
 
 headers = {
     'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': Config.MS_CV_KEY1,
+    'Ocp-Apim-Subscription-Key': Config.MS_CV_KEY,
 }
 
 params = urllib.urlencode({
