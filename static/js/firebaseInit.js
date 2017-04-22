@@ -9,6 +9,7 @@ var constants = {
     userReference : "user/",
     isPlayingReference : "/isPlaying",
     hasFinishedReference : "/hasFinished",
+    usersReference : "/users",
     value : "value",
 
     cityId : "#city-text",
@@ -43,6 +44,8 @@ var gameDatabase = {
             hasFinished: false,
             admin: userAdminId
         });
+        firebase.database().ref(constants.gameReference + gameId + constants.usersReference + '/' + userAdminId).set(0);
+        return true;
     },
 
 
@@ -90,6 +93,11 @@ var userDatabase = {
         firebase.database().ref(constants.userReference + userId).set({
             name: name
         });
+        return true;
+    },
+
+    joinUser : function(userId, gameId) {
+        firebase.database().ref(constants.gameReference + gameId + constants.usersReference + '/' + userId).set(0);
     },
 
     getUserName : function(userId) {
