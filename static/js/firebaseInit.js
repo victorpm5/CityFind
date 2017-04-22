@@ -9,7 +9,12 @@ var constants = {
     userReference : "user/",
     isPlayingReference : "/isPlaying",
     hasFinishedReference : "/hasFinished",
-    value : "value"
+    value : "value",
+
+    cityId : "#city-text",
+    phoneId : "#phone-text",
+    nameId : "#name-text",
+    buttonId : "#form-button"
 }
 
 var firebaseDatabase = {
@@ -31,6 +36,7 @@ var firebaseDatabase = {
 var gameDatabase = {
 
     writeGame : function(gameId, city, userAdminId) {
+        console.log('New Game at: ' + constants.gameReference + gameId);
         firebase.database().ref(constants.gameReference + gameId).set({
             city: city,
             isPlaying: false,
@@ -80,6 +86,7 @@ var gameDatabase = {
 var userDatabase = {
 
     writeUser : function(userId, name) {
+        console.log('New User at: ' + constants.userReference + userId);
         firebase.database().ref(constants.userReference + userId).set({
             name: name
         });
