@@ -1,12 +1,13 @@
 $(document).ready(function() {
 
     firebaseDatabase.init();
-    gameDatabase.updateFinishedGame('111111', true);
+    console.log(userDatabase.getUserName('644577607'));
 
 });
 
 var constants = {
     gameReference : "game/",
+    userReference : "user/",
     isPlayingReference : "/isPlaying",
     hasFinishedReference : "/hasFinished",
     value : "value"
@@ -72,6 +73,23 @@ var gameDatabase = {
         return firebase.database().ref(constants.gameReference + gameId).once(constants.value)
                 .then(function(snapshot) {
                   return snapshot.val().city;
+                });
+    }
+
+}
+
+var userDatabase = {
+
+    writeUser : function(userId, name) {
+        firebase.database().ref(constants.userReference + userId).set({
+            name: name
+        });
+    },
+
+    getUserName : function(userId) {
+        return firebase.database().ref(constants.userReference + userId).once(constants.value)
+                .then(function(snapshot) {
+                  return snapshot.val().name;
                 });
     }
 
