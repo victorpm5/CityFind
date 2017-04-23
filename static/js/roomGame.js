@@ -5,6 +5,6 @@ $(document).ready(function() {
     console.log('GameID: ' + gameId);
     gameDatabase.setCityGame(gameId);
 
-//    gameDatabase.setUserScore(gameId, userId)
+    gameDatabase.setUserScore(gameId, userId)
 
 });

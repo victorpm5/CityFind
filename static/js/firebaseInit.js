@@ -102,10 +102,13 @@ var gameDatabase = {
     },
 
     setUserScore : function(gameId, userId) {
-        firebase.database().ref(constants.gameReference + gameId + constants.cityReference).once(constants.value)
+        firebase.database().ref(constants.gameReference +
+                                gameId +
+                                constants.usersReference + '/' +
+                                userId).once(constants.value)
                 .then(function(snapshot) {
                     console.log('Into getting city name: ' + snapshot.val());
-                    $(constants.cityRefill).html(snapshot.val());
+                    $(constants.scoreDiv).html(snapshot.val());
                 });
     }
 
