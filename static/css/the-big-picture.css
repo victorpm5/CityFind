@@ -187,6 +187,14 @@ a:active {
 	margin: 5px;
 }
 
+#insert-photo2{
+	width: 20px;
+	height: 20px;
+	resize: both;
+	margin-bottom:  10px;
+}
+
+
 #btn-photo{
 	align-self: flex-end;
 	text-align: right;
@@ -289,10 +297,11 @@ form{
 }
 
 #file2{
+		padding: 10px;
 	padding-top: 30px;
 	padding-bottom:  30px;
-	font-size: 40px;
-	resize: horizontal;
+	font-size: 30px;
+	resize: both;
 	font-size-adjust: auto;
 	font-family: 'Ranga', cursive;
 }
@@ -307,10 +316,11 @@ form{
 }
 
 #input-submit{
-	padding-top: 20px;
-	padding-bottom: 20px;
-	margin-left: 30%;
-	margin-right: 30%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 10%;
+	margin-right: 10%;
+	resize: both;
 	color: white;
 	background-color: rgb(196, 187, 200);
 		font-family: 'Ranga', cursive;
