@@ -33,5 +33,6 @@ $(document).ready(function() {
     });
 
     gameDatabase.notifyWhenPlayingChanges(gameId, userId);
+    gameDatabase.notifyWhenWordChanges(gameId, userId);
 
 });

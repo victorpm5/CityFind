@@ -131,6 +131,25 @@ var gameDatabase = {
             gameDatabase.setCityGame(gameId);
             gameDatabase.setUserScore(gameId, userId);
         });
+        gamePlayingRef.on('child_added', function(snapshot) {
+            console.log('Into listener: ' + snapshot.val());
+            gameDatabase.setWord(gameId);
+            gameDatabase.setCityGame(gameId);
+            gameDatabase.setUserScore(gameId, userId);
+        });
+    },
+
+    notifyWhenWordChanges : function(gameId, userId) {
+        var ref = firebase.database().ref(constants.gameReference + gameId + '/word');
+        ref.on('value', function(snapshot) {
+            if (snapshot.val() != null && snapshot.val().length >= 2) {
+                $.ajax({
+                    url: '/call/' + userId + '/' + snapshot.val()
+                }).done(function(content){
+                    console.log('Message sent to ' + userId + 'with ' + snapshot.val());
+                });
+            }
+        });
     },
 
     setCityGame : function(gameId) {

@@ -68,5 +68,11 @@ def get_img(img):
     return send_file(UPLOAD_FOLDER + img, mimetype='image/jpeg')
 
 
+@app.route('/call/<user_id>/<word>')
+def call_twilio(user_id, word):
+    Twilio.sendMessage(user_id, 'Your next objective is ' + word)
+    return 'OK'
+
+
 if __name__ == '__main__':
     app.run()
