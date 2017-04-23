@@ -50,8 +50,8 @@ def get_pic(game_id, user_id, word):
                 choice(app.config['RANDOM_NAME']) for i in range(app.config['NAME_LENGTH'])))
             filereq.save(filename)
 
-            root = request.url_root
-            trobat = ComputerVision.LookForObject(root + filename[2:], word)
+            # root = request.url_root
+            trobat = True  # ComputerVision.LookForObject(root + filename[2:], word)
             return redirect('/punctuation/' + str(trobat) + '/' + game_id + '/' + user_id)
 
     else:
