@@ -85,6 +85,31 @@ var gameDatabase = {
         return firebase.database().ref().update(updates);
     },
 
+    updateScore : function(gameId, userId) {
+        firebase.database().ref(constants.gameReference +
+                                gameId +
+                                constants.usersReference + '/' +
+                                userId).once(constants.value)
+                .then(function(snapshot) {
+                    console.log('Into getting user score: ' + snapshot.val());
+                    if (snapshot.val() != null) {
+                        firebase.database().ref(constants.gameReference +
+                                                gameId +
+                                                constants.usersReference + '/' +
+                                                userId).set(snapshot.val() + 1, function(error) {
+                                                    if (error) {
+                                                        alert('Something went wrong...');
+                                                    } else {
+                                                        window.location = '/' + gameId + '/' + userId;
+                                                    }
+                                                });
+                    } else {
+                        alert('Something went wrong...');
+                    }
+                });
+
+    },
+
     updateWord : function(gameId, word) {
         var updates = {};
         console.log('Updating at: ' + '/' + constants.gameReference + gameId + constants.wordReference);
@@ -141,7 +166,14 @@ var gameDatabase = {
                     console.log('Into getting word to input: ' + snapshot.val());
                     $('#word_input').val(snapshot.val());
                 });
+    },
+
+    increaseScore : function(gameId, userId) {
+        console.log('Increasing score');
+        gameDatabase.updatePlayingGame(gameId, false);
+        gameDatabase.updateScore(gameId, userId);
     }
+
 
 }
 

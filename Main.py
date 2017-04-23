@@ -40,21 +40,27 @@ def get_pic(game_id, user_id, word):
     if request.method == 'POST':
         if 'file' not in request.files:
             flash('No file part')
-            redirect(request.url)
+            return redirect(request.url)
         filereq = request.files['file']
         if filereq.filename == '':
             flash('No selected file')
-            redirect(request.url)
+            return redirect(request.url)
         if filereq:
             filename = os.path.join(app.config['UPLOAD_FOLDER'], ''.join(
                 choice(app.config['RANDOM_NAME']) for i in range(app.config['NAME_LENGTH'])))
             filereq.save(filename)
 
             root = request.url_root
-            trobat = ComputerVision.LookForObject(root + filename[2:],word)
-            return render_template('punctuation.html', trobat=trobat, game_id=game_id, user_id=user_id)
+            trobat = ComputerVision.LookForObject(root + filename[2:], word)
+            return redirect('/punctuation/' + str(trobat) + '/' + game_id + '/' + user_id)
 
-    return render_template('getPic.html', game_id=game_id, user_id=user_id, word=word)
+    else:
+        return render_template('getPic.html', game_id=game_id, user_id=user_id, word=word)
+
+
+@app.route('/punctuation/<trobat>/<game_id>/<user_id>')
+def punctuation(trobat, game_id, user_id):
+    return render_template('punctuation.html', trobat=trobat, game_id=game_id, user_id=user_id)
 
 
 @app.route('/img/<img>')
