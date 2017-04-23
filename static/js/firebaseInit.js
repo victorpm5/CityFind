@@ -191,6 +191,14 @@ var gameDatabase = {
         return firebase.database().ref().update(updates);
     },
 
+    setTimer : function(gameId) {
+        firebase.database().ref(constants.gameReference + gameId + '/time').once(constants.value)
+                .then(function(snapshot) {
+                    console.log('Into getting time: ' + snapshot.val());
+                    // TODO Insert into countdown
+                });
+    },
+
     start : function(gameId) {
         gameDatabase.updatePlayingGame(gameId, true);
         gameDatabase.startTimer(gameId);
