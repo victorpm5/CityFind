@@ -33,12 +33,15 @@
 
 <body>
 
+  <input id="game_id_input" type="hidden" value="{{ game_id }}">
+  <input id="user_id_input" type="hidden" value="{{ user_id }}">
+
   <header>
     <div class="card card-inverse card-warning mb-3 text-center" id="card-time">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p class="timer-room">09:00</p>
-          <footer id="city">Playing in <cite title="Source Title">Copenhagen</cite></footer>
+          <footer id="city"><b>{{ game_id }}</b> | Playing in <cite id="city-refill" title="City">?</cite></footer>
         </blockquote>
       </div>
     </div>
@@ -68,7 +71,7 @@
       <li class="list-group-item">
           <div class="card no-padding">
             <div class="card-block">
-              <p class="text-puntuation">Puntuation:</p>
+              <p class="text-puntuation">Score:</p>
             </div>
         </div>
       </li>
@@ -95,5 +98,5 @@
   <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-messaging.js"></script>
   <script type="text/javascript" src="../static/js/firebaseInit.js"></script>
-  <script type="text/javascript" src="../static/js/index.js"></script>
+  <script type="text/javascript" src="../static/js/roomGame.js"></script>
 </body>

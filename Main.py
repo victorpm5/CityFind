@@ -20,9 +20,9 @@ def join_game():
     return render_template('joinGame.html')
 
 
-@app.route('/<gameId>/<userId>')
-def room_game(gameId, userId):
-    return render_template('roomGame.html')
+@app.route('/<game_id>/<user_id>')
+def room_game(game_id, user_id):
+    return render_template('roomGame.html', game_id=game_id, user_id=user_id)
 
 
 if __name__ == '__main__':

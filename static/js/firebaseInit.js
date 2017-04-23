@@ -9,6 +9,7 @@ var constants = {
     userReference : "user/",
     isPlayingReference : "/isPlaying",
     hasFinishedReference : "/hasFinished",
+    cityReference : "/city",
     usersReference : "/users",
     value : "value",
 
@@ -16,7 +17,11 @@ var constants = {
     phoneId : "#phone-text",
     nameId : "#name-text",
     codeId : "#code-text",
-    buttonId : "#form-button"
+    buttonId : "#form-button",
+
+    cityRefill : "#city-refill",
+    gameIdInput : "#game_id_input",
+    userIdInput : "#user_id_input"
 }
 
 var firebaseDatabase = {
@@ -87,10 +92,11 @@ var gameDatabase = {
         });
     },
 
-    getCityGame : function(gameId) {
-        return firebase.database().ref(constants.gameReference + gameId).once(constants.value)
+    setCityGame : function(gameId) {
+        firebase.database().ref(constants.gameReference + gameId + constants.cityReference).once(constants.value)
                 .then(function(snapshot) {
-                  return snapshot.val().city;
+                    console.log('Into getting city name: ' + snapshot.val());
+                    $(constants.cityRefill).html(snapshot.val());
                 });
     }
 
