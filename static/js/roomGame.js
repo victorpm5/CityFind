@@ -7,4 +7,5 @@ $(document).ready(function() {
 
     gameDatabase.setUserScore(gameId, userId)
 
+    gameDatabase.setWord(gameId);
 });

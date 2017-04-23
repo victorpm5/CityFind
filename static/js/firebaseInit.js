@@ -11,6 +11,7 @@ var constants = {
     hasFinishedReference : "/hasFinished",
     cityReference : "/city",
     usersReference : "/users",
+    wordReference : "/word",
     value : "value",
 
     cityId : "#city-text",
@@ -22,7 +23,8 @@ var constants = {
     cityRefill : "#city-refill",
     gameIdInput : "#game_id_input",
     userIdInput : "#user_id_input",
-    scoreDiv : "#score-div"
+    scoreDiv : "#score-div",
+    wordRefill : "#word-refill"
 }
 
 var firebaseDatabase = {
@@ -83,6 +85,16 @@ var gameDatabase = {
         return firebase.database().ref().update(updates);
     },
 
+    updateWord : function(gameId, word) {
+        var updates = {};
+        console.log('Updating at: ' + '/' + constants.gameReference + gameId + constants.wordReference);
+        updates['/' + constants.gameReference +
+                gameId +
+                constants.wordReference] = word;
+
+        return firebase.database().ref().update(updates);
+    },
+
     notifyWhenPlayingChanges : function(gameId) {
         var gamePlayingRef = firebase.
                 database().ref( constants.gameReference +
@@ -107,8 +119,18 @@ var gameDatabase = {
                                 constants.usersReference + '/' +
                                 userId).once(constants.value)
                 .then(function(snapshot) {
-                    console.log('Into getting city name: ' + snapshot.val());
-                    $(constants.scoreDiv).html(snapshot.val());
+                    console.log('Into getting user score: ' + snapshot.val());
+                    if (snapshot.val() != null) {
+                        $(constants.scoreDiv).html(snapshot.val());
+                    }
+                });
+    },
+
+    setWord : function(gameId) {
+        firebase.database().ref(constants.gameReference + gameId + constants.wordReference).once(constants.value)
+                .then(function(snapshot) {
+                    console.log('Into getting word: ' + snapshot.val());
+                    $(constants.wordRefill).html(snapshot.val());
                 });
     }
 
