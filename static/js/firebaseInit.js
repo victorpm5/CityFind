@@ -116,7 +116,6 @@ var gameDatabase = {
         updates['/' + constants.gameReference +
                 gameId +
                 constants.wordReference] = word;
-
         return firebase.database().ref().update(updates);
     },
 
@@ -194,8 +193,13 @@ var gameDatabase = {
     start : function(gameId) {
         gameDatabase.updatePlayingGame(gameId, true);
         gameDatabase.startTimer(gameId);
+        $.ajax({
+            url: '/static/wordList.txt'
+        }).done(function(content){
+            lines = content.replace(/\r\n|\r/g, '\n').trim().split('\n');
+            gameDatabase.updateWord(gameId, lines[Math.floor(Math.random()*lines.length)]);
+        });
     }
-
 }
 
 var userDatabase = {

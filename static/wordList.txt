@@ -1,0 +1,11 @@
+laptop
+bottle
+phone
+plate
+pen
+paper
+charger
+cup
+hat
+bag
+wood
