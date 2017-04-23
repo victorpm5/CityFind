@@ -190,7 +190,7 @@ a:active {
 #btn-photo{
 	align-self: flex-end;
 	text-align: right;
-		margin-top: 80px;
+		margin-top: 60px;
 }
 
 .list-group {
@@ -247,5 +247,17 @@ button.color-purple:hover{
 	resize: horizontal;
 	padding-left: 7px;
 	padding-right: 7px;
+}
 
+#button-start{
+	font-size-adjust: auto;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.top-center{
+	text-align: center;
 }
