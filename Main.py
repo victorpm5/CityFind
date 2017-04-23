@@ -50,8 +50,7 @@ def get_pic():
                 choice(app.config['RANDOM_NAME']) for i in range(app.config['NAME_LENGTH'])))
             filereq.save(filename)
 
-            # imageRecognition
-            # score calculations
+            trobat = ComputerVision.LookForObject(filename,'water')
             # show messages
 
             return redirect(filename)

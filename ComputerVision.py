@@ -15,11 +15,11 @@ params = urllib.urlencode({
     'language': 'en',
 })
 
-def analize():
+def analize(imageUrl):
 
     result = None
 
-    json = {'url': 'http://weknownyourdreamz.com/images/park/park-07.jpg'} #Just for testing -> urls taken as parameters
+    json = {'url': imageUrl} #Just for testing -> urls taken as parameters
 
     while True:
 
@@ -36,7 +36,24 @@ def analize():
                     result = response.content
 
         else:
-            print("Error code: %d" % (response.status_code))
+            print ("Error code: %d" % (response.status_code))
         break
+    return result
 
-    print result
+
+def LookForObject(imageUrl, object):
+    result = analize(imageUrl)
+    if result == None:
+        return False
+    elif 'tags' in result:
+         for tag in result['tags']:
+             if tag['name'] == object:
+                 return True
+    elif 'categories' in result:
+        for category in result['categories']:
+             if category['name'] == object:
+                 return True
+    return False
+
+
+
