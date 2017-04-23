@@ -11,4 +11,10 @@ $(document).ready(function() {
         window.location = '/get_pic/' + gameId + '/' + userId + '/' + $('#word_input').val();
     });
 
+    $('#button-start').on('click', function() {
+        gameDatabase.start(gameId);
+    });
+
+    gameDatabase.notifyWhenPlayingChanges(gameId, userId);
+
 });

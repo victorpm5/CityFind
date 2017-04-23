@@ -7,7 +7,7 @@ $(document).ready(function() {
     if (found == 'False') {
         gameDatabase.increaseScore(gameId, userId);
     } else {
-        // window.location = '/' + gameId + '/' + userId;
+        window.location = '/' + gameId + '/' + userId;
     }
 
 });

@@ -120,13 +120,16 @@ var gameDatabase = {
         return firebase.database().ref().update(updates);
     },
 
-    notifyWhenPlayingChanges : function(gameId) {
+    notifyWhenPlayingChanges : function(gameId, userId) {
+
         var gamePlayingRef = firebase.
                 database().ref( constants.gameReference +
-                                gameId +
-                                constants.gamePlayingRef);
-        gamePlayingRef.on(constants.value, function(snapshot) {
-            // TODO notify users
+                                gameId);
+        gamePlayingRef.on('child_changed', function(snapshot) {
+            console.log('Into listener: ' + snapshot.val());
+            gameDatabase.setWord(gameId);
+            gameDatabase.setCityGame(gameId);
+            gameDatabase.setUserScore(gameId, userId);
         });
     },
 
@@ -171,9 +174,13 @@ var gameDatabase = {
     increaseScore : function(gameId, userId) {
         console.log('Increasing score');
         gameDatabase.updatePlayingGame(gameId, false);
+        gameDatabase.updateWord(gameId, '?');
         gameDatabase.updateScore(gameId, userId);
-    }
+    },
 
+    start : function(gameId) {
+        gameDatabase.updatePlayingGame(gameId, true);
+    }
 
 }
 
