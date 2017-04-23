@@ -132,6 +132,14 @@ var gameDatabase = {
                     console.log('Into getting word: ' + snapshot.val());
                     $(constants.wordRefill).html(snapshot.val());
                 });
+    },
+
+    getWord : function(gameId) {
+        firebase.database().ref(constants.gameReference + gameId + constants.wordReference).once(constants.value)
+                .then(function(snapshot) {
+                    console.log('Into getting word: ' + snapshot.val());
+                    $('#word_hidden').val(snapshot.val());
+                });
     }
 
 }
