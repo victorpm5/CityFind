@@ -31,10 +31,20 @@
 </head>
 
 <body>
-    <form action="/get_pic/{{ game_id }}/{{ user_id }}/{{ word }}" method="post" enctype="multipart/form-data">
 
-        <input type="file" name="file" accept="image/*" capture="camera">
-        <input type="submit" value="Take picture">
-    </form>
+  <div class="card card-inverse card-warning mb-3 text-center" id="card-photo">
+    <div class="card-block" id="card-submit">
+      <form action="/get_pic/{{ game_id }}/{{ user_id }}/{{ word }}" method="post" enctype="multipart/form-data">
+
+        <input type="file" name="file" id="file" class="inputfile" name="file" accept="image/*" capture="camera"/>
+
+        <label id="file2"for="file">
+          <img src="../static/images/photo.png" id = "insert-photo" >
+          Choose a file</label>
+        <input id="input-submit" type="submit" value="SEND">
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>
