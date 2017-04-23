@@ -4,7 +4,7 @@ $(document).ready(function() {
     var userId = $('#punctuation_user').val();
     var found = $('#punctuation_found').val();
 
-    if (found == 'False') {
+    if (found == 'True') {
         gameDatabase.increaseScore(gameId, userId);
     } else {
         window.location = '/' + gameId + '/' + userId;

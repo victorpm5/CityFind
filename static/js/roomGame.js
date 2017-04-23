@@ -5,7 +5,9 @@ $(document).ready(function() {
     console.log('GameID: ' + gameId);
     gameDatabase.setWord(gameId);
     gameDatabase.setCityGame(gameId);
-    gameDatabase.setUserScore(gameId, userId)
+    gameDatabase.setUserScore(gameId, userId);
+    gameDatabase.setAdminUser(gameId, userId);
+    gameDatabase.setIsPlaying(gameId, userId);
 
     $('#camera-button').on('click', function() {
         window.location = '/get_pic/' + gameId + '/' + userId + '/' + $('#word_input').val();
@@ -24,7 +26,9 @@ $(document).ready(function() {
 
         }else{
             console.log('Acabar joc');
-            //acabar joc
+            $('#button-start').text('START');
+            $('#button-start').css('background-color', 'green');
+            gameDatabase.updatePlayingGame(gameId, false);
         }
     });
 

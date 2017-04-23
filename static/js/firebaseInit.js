@@ -116,6 +116,7 @@ var gameDatabase = {
         updates['/' + constants.gameReference +
                 gameId +
                 constants.wordReference] = word;
+
         return firebase.database().ref().update(updates);
     },
 
@@ -207,6 +208,30 @@ var gameDatabase = {
             lines = content.replace(/\r\n|\r/g, '\n').trim().split('\n');
             gameDatabase.updateWord(gameId, lines[Math.floor(Math.random()*lines.length)]);
         });
+    },
+
+    setAdminUser : function(gameId, userId) {
+        firebase.database().ref(constants.gameReference + gameId + '/admin').once(constants.value)
+                .then(function(snapshot) {
+                    console.log('Into getting admin: ' + snapshot.val());
+                    if (snapshot.val() != userId) {
+                        $('#button-start').attr('hidden', true);
+                    }
+                });
+    },
+
+    setIsPlaying : function(gameId, userId) {
+        firebase.database().ref(constants.gameReference + gameId + constants.isPlayingReference).once(constants.value)
+                .then(function(snapshot) {
+                    console.log('Into getting isPlaying: ' + snapshot.val());
+                    if (snapshot.val()) {
+                        $('#button-start').text('STOP');
+                        $('#button-start').css('background-color', 'red');
+                    } else {
+                        $('#button-start').text('START');
+                        $('#button-start').css('background-color', 'green');
+                    }
+                });
     }
 }
 
