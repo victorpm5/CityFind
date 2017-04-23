@@ -43,6 +43,11 @@ def get_pic():
         if filereq:
             filename = os.path.join(app.config['UPLOAD_FOLDER'], ''.join(choice(app.config['RANDOM_NAME']) for i in range(app.config['NAME_LENGTH'])))
             filereq.save(filename)
+
+            # imageRecognition
+            # score calculations
+            # show messages
+
             return redirect(filename)
     return render_template('getPic.html')
 
