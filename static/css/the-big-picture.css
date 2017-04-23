@@ -129,7 +129,7 @@ input.form-control{
 }
 
 .footer {
-  position: absolute;
+  position: static;
   right: 0;
   bottom: 0;
   left: 0;
@@ -198,8 +198,9 @@ a:active {
 	border-width: 5px;
 	align-self: center;
 	height: inherit;
-	margin-left: 30%;
-	margin-right: 30%;
+	margin-left: 20%;
+	margin-right: 20%;
+	resize: both;
 }
 
 .list-group-item{
@@ -235,4 +236,16 @@ p.text-puntuation{
 
 button.color-purple:hover{
 	background-color: rgba(123, 96, 140, 1);
+}
+
+.body{
+	position:relative;
+}
+
+.padding-center{
+	position: static;
+	resize: horizontal;
+	padding-left: 7px;
+	padding-right: 7px;
+
 }
