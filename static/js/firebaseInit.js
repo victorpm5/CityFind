@@ -178,8 +178,22 @@ var gameDatabase = {
         gameDatabase.updateScore(gameId, userId);
     },
 
+    startTimer : function(gameId) {
+        var date = new Date();
+        date = new Date(date.getTime() + 10*60*1000);
+        console.log('Time: ' + date);
+
+        var updates = {};
+        console.log('Updating at: ' + '/' + constants.gameReference + gameId + '/time');
+        updates['/' + constants.gameReference +
+                gameId + '/time'] = date;
+
+        return firebase.database().ref().update(updates);
+    },
+
     start : function(gameId) {
         gameDatabase.updatePlayingGame(gameId, true);
+        gameDatabase.startTimer(gameId);
     }
 
 }
