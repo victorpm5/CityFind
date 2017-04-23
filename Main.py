@@ -50,11 +50,10 @@ def get_pic(game_id, user_id, word):
                 choice(app.config['RANDOM_NAME']) for i in range(app.config['NAME_LENGTH'])))
             filereq.save(filename)
 
-            trobat = ComputerVision.LookForObject(filename, word)
-            # show messages
+            trobat = ComputerVision.LookForObject(filename,word)
+            return render_template('punctuation.html', trobat=trobat, game_id=game_id, user_id=user_id)
 
-            return redirect(filename)
-    return render_template('getPic.html', game_id=game_id, user_id=user_id, word=word)
+    return render_template('getPic.html')
 
 
 @app.route('/img/<img>')
