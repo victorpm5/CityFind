@@ -11,4 +11,20 @@ $(document).ready(function() {
         window.location = '/get_pic/' + gameId + '/' + userId + '/' + $('#word_input').val();
     });
 
+    $('#button-start').on('click', function() {
+
+        var valor = $('#button-start').text();
+
+        if(valor == 'START') {
+
+            $('#button-start').text('STOP');
+            $('#button-start').css('background-color', 'red');
+
+            //    countdown!
+        }else{
+            console.log('Acabar joc');
+            //acabar joc
+        }
+    });
+
 });

@@ -173,8 +173,6 @@ var gameDatabase = {
         gameDatabase.updatePlayingGame(gameId, false);
         gameDatabase.updateScore(gameId, userId);
     }
-
-
 }
 
 var userDatabase = {
