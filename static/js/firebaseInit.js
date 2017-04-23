@@ -21,7 +21,8 @@ var constants = {
 
     cityRefill : "#city-refill",
     gameIdInput : "#game_id_input",
-    userIdInput : "#user_id_input"
+    userIdInput : "#user_id_input",
+    scoreDiv : "#score-div"
 }
 
 var firebaseDatabase = {
@@ -93,6 +94,14 @@ var gameDatabase = {
     },
 
     setCityGame : function(gameId) {
+        firebase.database().ref(constants.gameReference + gameId + constants.cityReference).once(constants.value)
+                .then(function(snapshot) {
+                    console.log('Into getting city name: ' + snapshot.val());
+                    $(constants.cityRefill).html(snapshot.val());
+                });
+    },
+
+    setUserScore : function(gameId, userId) {
         firebase.database().ref(constants.gameReference + gameId + constants.cityReference).once(constants.value)
                 .then(function(snapshot) {
                     console.log('Into getting city name: ' + snapshot.val());

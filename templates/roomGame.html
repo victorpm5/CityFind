@@ -52,26 +52,32 @@
     <ul class="list-group">
       <li class="list-group-item">
         <div class="row paddnew">
-          <div  id="word-game">
-                  <div class="card">
-                    <div class="card-block">
-                      <h3 class="card-title">Parque</h3>
-                    </div>
-                  </div>
+          <div id="word-game">
+              <div class="card">
+                <div class="card-block">
+                  <h3 class="card-title">Parque</h3>
+                </div>
+              </div>
           </div>
+        </div>
       </li>
       <li class="list-group-item">
         <div  class="w-75" id="btn-photo">
-          <button type="button" class="btn btn-success color-purple">
-              <img src="../static/images/photo.png" id = "insert-photo" alt="Photo" >
-          </button>
+            <form method="post" enctype="multipart/form-data">
+              <input style="display:none;" id="camera-input" type="file" name="file" onchange="this.form.submit()" accept="image/*" capture="camera">
+              <label for="camera-input">
+                  <button type="button" class="btn btn-success color-purple">
+                      <img src="../static/images/photo.png" id = "insert-photo" alt="Photo" >
+                  </button>
+              </label>
+            </form>
         </div>
       </li>
 
       <li class="list-group-item">
           <div class="card no-padding">
             <div class="card-block">
-              <p class="text-puntuation">Score:</p>
+              <p class="text-puntuation">Score: <b id="score-div"></b></p>
             </div>
         </div>
       </li>
