@@ -187,6 +187,14 @@ a:active {
 	margin: 5px;
 }
 
+#insert-photo2{
+	width: 20px;
+	height: 20px;
+	resize: both;
+	margin-bottom:  10px;
+}
+
+
 #btn-photo{
 	align-self: flex-end;
 	text-align: right;
@@ -260,4 +268,98 @@ button.color-purple:hover{
 
 .top-center{
 	text-align: center;
+}
+
+#card-photo{
+	border-width: thin;
+	border-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+	position: relative;
+	text-align: center;
+}
+
+.body{
+	vertical-align: center;
+}
+
+form{
+	text-align: center;
+	display: grid;
+	align-self: center;
+  	margin: 4px;
+	margin-left: 2em;
+	margin-right: 2em;
+	resize: both;
+	padding: 5px;
+
+
+}
+
+#file2{
+		padding: 10px;
+	padding-top: 30px;
+	padding-bottom:  30px;
+	font-size: 30px;
+	resize: both;
+	font-size-adjust: auto;
+	font-family: 'Ranga', cursive;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+#input-submit{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 10%;
+	margin-right: 10%;
+	resize: both;
+	color: white;
+	background-color: rgb(196, 187, 200);
+		font-family: 'Ranga', cursive;
+		font-size: 30px;
+		margin-top: 20px;
+		border: transparent;
+		resize: horizontal;
+}
+
+
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: grey;
+    background-color: white;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover, #input-submit:hover {
+     box-shadow: 0 9px 20px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.custom-file-input {
+	background-color: rgb(85, 85, 85);
+	padding: 10px;
+}
+
+.card-block#card-submit{
+	padding-left: 20%;
+	padding-right: 20%;
 }
