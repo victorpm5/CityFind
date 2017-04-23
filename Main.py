@@ -35,8 +35,8 @@ def room_game(game_id, user_id):
     return render_template('roomGame.html', game_id=game_id, user_id=user_id)
 
 
-@app.route('/get_pic', methods=['GET', 'POST'])
-def get_pic():
+@app.route('/get_pic/<game_id>/<user_id>/<word>', methods=['GET', 'POST'])
+def get_pic(game_id, user_id, word):
     if request.method == 'POST':
         if 'file' not in request.files:
             flash('No file part')
@@ -50,11 +50,11 @@ def get_pic():
                 choice(app.config['RANDOM_NAME']) for i in range(app.config['NAME_LENGTH'])))
             filereq.save(filename)
 
-            trobat = ComputerVision.LookForObject(filename,'water')
+            trobat = ComputerVision.LookForObject(filename, word)
             # show messages
 
             return redirect(filename)
-    return render_template('getPic.html')
+    return render_template('getPic.html', game_id=game_id, user_id=user_id, word=word)
 
 
 @app.route('/img/<img>')

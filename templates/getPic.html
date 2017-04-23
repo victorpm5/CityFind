@@ -3,7 +3,8 @@
     <title>Android Webcam capture test</title>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
+    <form action="/get_pic/{{ game_id }}/{{ user_id }}/{{ word }}" method="post" enctype="multipart/form-data">
+
         <input type="file" name="file" accept="image/*" capture="camera">
         <input type="submit" value="Take picture">
     </form>

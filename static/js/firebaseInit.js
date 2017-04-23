@@ -130,6 +130,7 @@ var gameDatabase = {
         firebase.database().ref(constants.gameReference + gameId + constants.wordReference).once(constants.value)
                 .then(function(snapshot) {
                     console.log('Into getting word: ' + snapshot.val());
+                    $('#word_input').val(snapshot.val());
                     $(constants.wordRefill).html(snapshot.val());
                 });
     },
@@ -137,8 +138,8 @@ var gameDatabase = {
     getWord : function(gameId) {
         firebase.database().ref(constants.gameReference + gameId + constants.wordReference).once(constants.value)
                 .then(function(snapshot) {
-                    console.log('Into getting word: ' + snapshot.val());
-                    $('#word_hidden').val(snapshot.val());
+                    console.log('Into getting word to input: ' + snapshot.val());
+                    $('#word_input').val(snapshot.val());
                 });
     }
 
