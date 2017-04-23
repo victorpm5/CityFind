@@ -4,16 +4,9 @@ $(document).ready(function() {
         var city = $(constants.cityId).val();
         var phone = $(constants.phoneId).val();
         var name = $(constants.nameId).val();
-        var random = Math.floor((Math.random() * 100000) + 1);
+        var random = utils.makeId();
         userDatabase.writeUser(phone, name);
-        gameDatabase.writeGame(random, city, nameId);
+        gameDatabase.writeGame(random, city, phone);
     });
 
 });
-
-var constants = {
-    cityId : "#city-text",
-    phoneId : "#phone-text"
-    nameId : "#name-text",
-    buttonId : "#form-button",
-}

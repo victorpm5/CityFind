@@ -9,7 +9,14 @@ var constants = {
     userReference : "user/",
     isPlayingReference : "/isPlaying",
     hasFinishedReference : "/hasFinished",
-    value : "value"
+    usersReference : "/users",
+    value : "value",
+
+    cityId : "#city-text",
+    phoneId : "#phone-text",
+    nameId : "#name-text",
+    codeId : "#code-text",
+    buttonId : "#form-button"
 }
 
 var firebaseDatabase = {
@@ -31,12 +38,24 @@ var firebaseDatabase = {
 var gameDatabase = {
 
     writeGame : function(gameId, city, userAdminId) {
+        console.log('New Game at: ' + constants.gameReference + gameId);
         firebase.database().ref(constants.gameReference + gameId).set({
             city: city,
             isPlaying: false,
             hasFinished: false,
             admin: userAdminId
         });
+        firebase.database().ref(constants.gameReference +
+                                gameId +
+                                constants.usersReference + '/' +
+                                userAdminId).set(0, function(error) {
+                                    if (error) {
+                                        alert('Something went wrong...');
+                                    } else {
+                                        window.location = '/' + gameId + '/' + userAdminId;
+                                    }
+                                });
+        return true;
     },
 
 
@@ -80,9 +99,33 @@ var gameDatabase = {
 var userDatabase = {
 
     writeUser : function(userId, name) {
+        console.log('New User at: ' + constants.userReference + userId);
         firebase.database().ref(constants.userReference + userId).set({
             name: name
         });
+        return true;
+    },
+
+    joinUser : function(userId, gameId) {
+        console.log('Join User at: ' + constants.gameReference + gameId + constants.usersReference + '/' + userId);
+        firebase.database().ref(constants.gameReference +
+                                gameId).once(constants.value)
+                                .then(function(snapshot) {
+                                    if (snapshot.val() != null) {
+                                        firebase.database().ref(constants.gameReference +
+                                                                gameId +
+                                                                constants.usersReference + '/' +
+                                                                userId).set(0, function(error) {
+                                                                    if (error) {
+                                                                        alert('Something went wrong...');
+                                                                    } else {
+                                                                        window.location = '/' + gameId + '/' + userId;
+                                                                    }
+                                                                });
+                                    } else {
+                                        alert('Something went wrong...');
+                                    }
+                                });
     },
 
     getUserName : function(userId) {
@@ -90,6 +133,18 @@ var userDatabase = {
                 .then(function(snapshot) {
                   return snapshot.val().name;
                 });
+    }
+
+}
+
+var utils = {
+
+    makeId : function() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
     }
 
 }

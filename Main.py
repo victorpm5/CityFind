@@ -51,5 +51,11 @@ def get_pic():
 def get_img(img):
     return send_file(UPLOAD_FOLDER + img, mimetype='image/jpeg')
 
+
+@app.route('/<gameId>/<userId>')
+def room_game(gameId, userId):
+    return render_template('roomGame.html')
+
+
 if __name__ == '__main__':
     app.run()

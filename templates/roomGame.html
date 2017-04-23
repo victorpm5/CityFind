@@ -1,0 +1,96 @@
+    <!DOCTYPE html>
+<html class="full" lang="en">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CityFind</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link href="../static/css/the-big-picture.css" rel="stylesheet">
+
+    <!-- Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Ranga" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+  <header>
+    <div class="card card-inverse card-warning mb-3 text-center" id="card-time">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p class="timer-room">09:00</p>
+          <footer id="city">Playing in <cite title="Source Title">Copenhagen</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="container">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row paddnew">
+          <div  id="word-game">
+                  <div class="card">
+                    <div class="card-block">
+                      <h3 class="card-title">Parque</h3>
+                    </div>
+                  </div>
+          </div>
+      </li>
+      <li class="list-group-item">
+        <div  class="w-75" id="btn-photo">
+          <button type="button" class="btn btn-success color-purple">
+              <img src="../static/images/photo.png" id = "insert-photo" alt="Photo" >
+          </button>
+        </div>
+      </li>
+
+      <li class="list-group-item">
+          <div class="card no-padding">
+            <div class="card-block">
+              <p class="text-puntuation">Puntuation:</p>
+            </div>
+        </div>
+      </li>
+
+    </ul>
+      </div>
+
+    </div>
+
+    <div class="footer">
+        <i>Developed in CopenHacks 2017 with ♥</i>
+    </div>
+
+  <!-- jQuery -->
+  <script src="../static/js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-messaging.js"></script>
+  <script type="text/javascript" src="../static/js/firebaseInit.js"></script>
+  <script type="text/javascript" src="../static/js/index.js"></script>
+</body>
