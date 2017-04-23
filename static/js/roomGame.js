@@ -20,11 +20,14 @@ $(document).ready(function() {
             $('#button-start').text('STOP');
             $('#button-start').css('background-color', 'red');
 
-            //    countdown!
+            gameDatabase.start(gameId);
+
         }else{
             console.log('Acabar joc');
             //acabar joc
         }
     });
+
+    gameDatabase.notifyWhenPlayingChanges(gameId, userId);
 
 });
