@@ -131,6 +131,12 @@ var gameDatabase = {
             gameDatabase.setCityGame(gameId);
             gameDatabase.setUserScore(gameId, userId);
         });
+        gamePlayingRef.on('child_added', function(snapshot) {
+            console.log('Into listener: ' + snapshot.val());
+            gameDatabase.setWord(gameId);
+            gameDatabase.setCityGame(gameId);
+            gameDatabase.setUserScore(gameId, userId);
+        });
     },
 
     setCityGame : function(gameId) {
