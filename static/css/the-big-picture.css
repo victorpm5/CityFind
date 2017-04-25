@@ -76,6 +76,7 @@ body {
 	padding-top: 20px;
 }
 
+<<<<<<< HEAD
 .form-card {
 	background-color: rgba(1, 1, 1, 0.18);
 	 box-shadow: 0 9px 20px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
@@ -125,4 +126,14 @@ input.form-control{
 .dbutton{
 	text-align: center;
 
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  color: #808080
 }
